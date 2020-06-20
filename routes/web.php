@@ -20,7 +20,10 @@ Route::get('/', function () {
     return view('welcome', compact('posts'));
 });
 
+Route::get('home', function (){
 
-Route::get('posts', function(){
-    return App\Post::all();
-});
+    return view('admin.dashboard');
+
+})->middleware('auth');
+
+Auth::routes();
