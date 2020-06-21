@@ -13,17 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $posts = App\Post::latest('published_at')->get();
+Route::get('/', 'PagesController@home');
 
+Route::get('home', 'HomeController@index');
 
-    return view('welcome', compact('posts'));
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function(){
+    Route::get('posts', 'PostsController@index')->name('admin.posts.index');
 });
 
-Route::get('home', function (){
 
-    return view('admin.dashboard');
-
-})->middleware('auth');
 
 Auth::routes();
