@@ -11,8 +11,8 @@
             </a>
         </li>
         <!-- <li class="nav-item has-treeview menu-open"> -->
-        <li class="nav-item has-treeview  {{ request()->is('admin/posts') ? 'menu-open' : '' }} ">
-            <a href="#" class="nav-link {{ request()->is('admin/posts') ? 'active' : '' }}">
+        <li class="nav-item has-treeview  {{ request()->is('admin/posts*') ? 'menu-open' : '' }} ">
+            <a href="#" class="nav-link {{ request()->is('admin/posts*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-bars"></i>
                 <p>
                     Blog
@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.posts.create') }}" class="nav-link {{ request()->is('admin/posts/create') ? 'active' : '' }} ">
                         <i class="fas fa-pen-square nav-icon"></i>
                         <p>Crear Post</p>
                     </a>
