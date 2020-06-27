@@ -37,7 +37,7 @@
 
                         <div class="form-group">
                             <label >Contenido publicación</label>
-                            <textarea rows="8" name="body" class="form-control" placeholder="Ingresa el contenido completo de la publicación"></textarea>
+                            <textarea name="body" class="form-control textarea" placeholder="Ingresa el contenido completo de la publicación"></textarea>
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -73,6 +73,20 @@
                         <!-- /.form group -->
 
                         <div class="form-group">
+                            <label> Eriquetas </label>
+                            <select class="select2" 
+                                    multiple="multiple" 
+                                    data-placeholder="Selecciona una o mas etiquetas" 
+                                    style="width: 100%;">
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}"> {{ $tag->name }}</option>    
+                                @endforeach
+                            </select>
+
+                        </div>
+                        <!-- /.form group -->
+
+                        <div class="form-group">
                             <label >Extracto de la publicación</label>
                             <textarea name="excerpt" class="form-control" placeholder="Ingresa un extracto de la publicación"></textarea>
                         </div>
@@ -100,7 +114,14 @@
 @endsection
 
 @push('styles')
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     
+    <!-- summernote -->
+    <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.min.css">
+
 @endpush
 
 @push('scripts')
@@ -112,12 +133,28 @@
     <script src="/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Select2 -->
+    <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
+    <!-- Summernote -->
+    <script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+    
 
     <script>
         //Date range picker
         $('#datePicker').datetimepicker({
             format: 'D/M/YYYY'
         });
+
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2();
+            // Summernote
+            $('.textarea').summernote({
+                height: 300,
+            });
+        });
+
+        
     </script>
     
 @endpush
