@@ -3,6 +3,7 @@
 use App\Post;
 use App\Category;
 use App\Tag;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -19,6 +20,7 @@ class PostTableSeeder extends Seeder
         Post::truncate();
         Category::truncate();
         Tag::truncate();
+        User::truncate();
 
 
         $post = new Post;
@@ -26,7 +28,7 @@ class PostTableSeeder extends Seeder
         $post->excerpt = "Extarcto de mi primer post";
         $post->body="<p>Contenido primer post</p>";
         $post->published_at = Carbon::now()->subDays(4);
-        $post->category_id = 1;
+        $post->category = 1;
         $post->save();
 
         $post = new Post;
@@ -34,7 +36,7 @@ class PostTableSeeder extends Seeder
         $post->excerpt = "Extarcto de mi segundo post";
         $post->body="<p>Contenido segundo post</p>";
         $post->published_at = Carbon::now()->subDays(3);
-        $post->category_id = 2;
+        $post->category = 2;
         $post->save();
 
         $post = new Post;
@@ -42,7 +44,7 @@ class PostTableSeeder extends Seeder
         $post->excerpt = "Extarcto de mi tercer post";
         $post->body="<p>Contenido tercer post</p>";
         $post->published_at = Carbon::now()->subDays(2);
-        $post->category_id = 1;
+        $post->category = 1;
         $post->save();
 
         $post = new Post;
@@ -50,7 +52,7 @@ class PostTableSeeder extends Seeder
         $post->excerpt = "Extarcto de mi cuarto post";
         $post->body="<p>Contenido cuarto post</p>";
         $post->published_at = Carbon::now()->subDays(1);
-        $post->category_id = 2;
+        $post->category = 2;
         $post->save();
 
         $category = new Category;
@@ -68,6 +70,12 @@ class PostTableSeeder extends Seeder
         $tag = new Tag;
         $tag->name = 'Etiqueta 2';
         $tag->save();
+
+        $user = new User;
+        $user->name = "admin";
+        $user->email = "admin@test.com";
+        $user->password = bcrypt( 'admin' );
+        $user->save();
 
 
     }

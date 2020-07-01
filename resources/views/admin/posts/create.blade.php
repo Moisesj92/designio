@@ -25,7 +25,8 @@
 @section('content')
 
     <div class="container-fluid">
-        <form>
+        <form method="POST" action=" {{ route('admin.posts.store') }} ">
+            @csrf
         <div class="row">
             <div class="col-8">
                 <div class="card card-secondary card-outline">
@@ -63,7 +64,7 @@
 
                         <div class="form-group">
                             <label>Categorías</label>
-                            <select name="" class="form-control">
+                            <select name="category" class="form-control">
                                 <option value="">Selecciona una categoría</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -73,8 +74,9 @@
                         <!-- /.form group -->
 
                         <div class="form-group">
-                            <label> Eriquetas </label>
-                            <select class="select2" 
+                            <label> Etiquetas </label>
+                            <select name="tags"
+                                    class="select2" 
                                     multiple="multiple" 
                                     data-placeholder="Selecciona una o mas etiquetas" 
                                     style="width: 100%;">
@@ -122,6 +124,9 @@
     <!-- summernote -->
     <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.min.css">
 
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
 @endpush
 
 @push('scripts')
@@ -137,12 +142,14 @@
     <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
     <!-- Summernote -->
     <script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
     
 
     <script>
         //Date range picker
         $('#datePicker').datetimepicker({
-            format: 'D/M/YYYY'
+            format: 'DD-MM-YYYY'
         });
 
         $(function () {
@@ -152,8 +159,25 @@
             $('.textarea').summernote({
                 height: 300,
             });
-        });
 
+            //Toast
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            function fireToastSucces( milisegundos ){
+                setTimeout( () => {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                    }) 
+                }, milisegundos);
+            }
+
+        });
         
     </script>
     

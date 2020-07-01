@@ -180,13 +180,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     
-    @yield('header')
+      @yield('header')
     
     <!-- /.content-header -->
 
     <!-- Main content -->
 
-    @yield('content')
+      @if (session()->has('flash'))
+
+        <!--
+        <div id="toastsContainerTopRight" class="toasts-top-right fixed">
+          <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="mr-auto">Exito</strong>
+                <button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                
+            </div>
+          </div>
+        </div>
+        -->
+
+        <script>
+
+            setTimeout( () => {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                }) 
+            }, 1000);
+
+        </script>
+        
+          
+      @endif
+
+      @yield('content')
 
     <!-- /.content -->
   </div>
