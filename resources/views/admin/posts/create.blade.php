@@ -64,7 +64,7 @@
 
                         <div class="form-group">
                             <label>Categorías</label>
-                            <select name="category" class="form-control">
+                            <select name="category_id" class="form-control">
                                 <option value="">Selecciona una categoría</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -75,7 +75,7 @@
 
                         <div class="form-group">
                             <label> Etiquetas </label>
-                            <select name="tags"
+                            <select name="tags[]"
                                     class="select2" 
                                     multiple="multiple" 
                                     data-placeholder="Selecciona una o mas etiquetas" 
@@ -120,12 +120,10 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-    
     <!-- summernote -->
     <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.min.css">
 
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    
 
 @endpush
 
@@ -142,8 +140,7 @@
     <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
     <!-- Summernote -->
     <script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- SweetAlert2 -->
-    <script src="/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
+    
     
 
     <script>
@@ -159,23 +156,6 @@
             $('.textarea').summernote({
                 height: 300,
             });
-
-            //Toast
-            var Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-            });
-
-            function fireToastSucces( milisegundos ){
-                setTimeout( () => {
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                    }) 
-                }, milisegundos);
-            }
 
         });
         

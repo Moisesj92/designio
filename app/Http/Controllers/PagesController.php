@@ -13,7 +13,6 @@ class PagesController extends Controller
     {
         $posts = Post::latest('published_at')->get();
 
-
         return view('welcome', compact('posts'));
     }
 }

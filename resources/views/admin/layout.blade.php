@@ -13,6 +13,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
   <!-- Style Dinamic-->
   @stack('styles')
@@ -186,38 +188,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
 
-      @if (session()->has('flash'))
-
-        <!--
-        <div id="toastsContainerTopRight" class="toasts-top-right fixed">
-          <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="mr-auto">Exito</strong>
-                <button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                
-            </div>
-          </div>
-        </div>
-        -->
-
-        <script>
-
-            setTimeout( () => {
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                }) 
-            }, 1000);
-
-        </script>
-        
-          
-      @endif
-
       @yield('content')
 
     <!-- /.content -->
@@ -252,12 +222,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
 
 <!-- Scripts Dinamic-->
 @stack('scripts')
 
 <!-- AdminLTE App -->
-<script src="/adminlte/js/adminlte.min.js"></script>
+<script src="/adminlte/js/adminlte.min.js"></script>  
+
+@if (session()->has('flash'))
+
+    <script>
+
+        $(function (){
+
+            //Toast
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 6000
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: ' {{session('flash')}} '
+            });
+            
+        });
+        
+    </script>
+
+@endif
+            
 
 
 </body>

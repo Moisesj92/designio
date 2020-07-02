@@ -23,7 +23,7 @@
                 <div class="read-more">
                     <a href="#" class="text-uppercase c-green">read more</a>
                 </div>
-                <div class="tags container-flex">
+                <div class="tag container-flex">
 
                     @foreach($post->tags as $tag)
 

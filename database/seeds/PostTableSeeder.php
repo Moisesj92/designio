@@ -28,7 +28,7 @@ class PostTableSeeder extends Seeder
         $post->excerpt = "Extarcto de mi primer post";
         $post->body="<p>Contenido primer post</p>";
         $post->published_at = Carbon::now()->subDays(4);
-        $post->category = 1;
+        $post->category_id = 1;
         $post->save();
 
         $post = new Post;
@@ -36,7 +36,7 @@ class PostTableSeeder extends Seeder
         $post->excerpt = "Extarcto de mi segundo post";
         $post->body="<p>Contenido segundo post</p>";
         $post->published_at = Carbon::now()->subDays(3);
-        $post->category = 2;
+        $post->category_id = 2;
         $post->save();
 
         $post = new Post;
@@ -44,7 +44,7 @@ class PostTableSeeder extends Seeder
         $post->excerpt = "Extarcto de mi tercer post";
         $post->body="<p>Contenido tercer post</p>";
         $post->published_at = Carbon::now()->subDays(2);
-        $post->category = 1;
+        $post->category_id = 1;
         $post->save();
 
         $post = new Post;
@@ -52,7 +52,7 @@ class PostTableSeeder extends Seeder
         $post->excerpt = "Extarcto de mi cuarto post";
         $post->body="<p>Contenido cuarto post</p>";
         $post->published_at = Carbon::now()->subDays(1);
-        $post->category = 2;
+        $post->category_id = 2;
         $post->save();
 
         $category = new Category;
