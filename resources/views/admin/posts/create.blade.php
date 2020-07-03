@@ -33,12 +33,15 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label >Título de la publicación</label>
-                            <input name="title" type="text" class="form-control" placeholder="Ingresa el título de la publicación">
+                            <input name="title" type="text" class="form-control  {{ $errors->has('title') ? 'is-invalid' : '' }}" placeholder="Ingresa el título de la publicación">
+                            {!! $errors->first('title', '<span class="error invalid-feedback"> :message </span>') !!}
                         </div>
 
                         <div class="form-group">
                             <label >Contenido publicación</label>
+                            
                             <textarea name="body" class="form-control textarea" placeholder="Ingresa el contenido completo de la publicación"></textarea>
+                            {!! $errors->first('body', '<div class="text-danger"><span> :message </span></div>') !!}
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -46,7 +49,20 @@
                 <!-- /.card -->
             </div>
             <!-- /.col -->
+
+            
+
+
             <div class="col-4">
+
+                @if (session()->has('flash'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Bien!</h5>
+                        {{ session('flash') }}
+                    </div>
+                @endif
+
                 <div class="card card-secondary card-outline">
                     <div class="card-body">
 

@@ -231,30 +231,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="/adminlte/js/adminlte.min.js"></script>  
 
-@if (session()->has('flash'))
 
-    <script>
-
-        $(function (){
-
-            //Toast
-            var Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 6000
-            });
-
-            Toast.fire({
-                icon: 'success',
-                title: ' {{session('flash')}} '
-            });
-            
-        });
-        
-    </script>
-
-@endif
             
 
 

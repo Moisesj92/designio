@@ -34,6 +34,11 @@ class PostsController extends Controller
     {
 
         //Validacion
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
 
         $post = new Post;
 
