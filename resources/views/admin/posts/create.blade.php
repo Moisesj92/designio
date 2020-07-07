@@ -33,15 +33,23 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label >Título de la publicación</label>
-                            <input name="title" type="text" class="form-control  {{ $errors->has('title') ? 'is-invalid' : '' }}" placeholder="Ingresa el título de la publicación">
+                            <input name="title"
+                            value =" {{ old('title') }}" 
+                            type="text" 
+                            class="form-control  {{ $errors->has('title') ? 'is-invalid' : '' }}" 
+                            placeholder="Ingresa el título de la publicación">
                             {!! $errors->first('title', '<span class="error invalid-feedback"> :message </span>') !!}
                         </div>
 
                         <div class="form-group">
                             <label >Contenido publicación</label>
-                            
-                            <textarea name="body" class="form-control textarea" placeholder="Ingresa el contenido completo de la publicación"></textarea>
                             {!! $errors->first('body', '<div class="text-danger"><span> :message </span></div>') !!}
+        
+                            <textarea 
+                            name="body" 
+                            class="form-control textarea" 
+                            placeholder="Ingresa el contenido completo de la publicación"> {{ old('body') }} </textarea>
+                            
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -70,7 +78,11 @@
                         <div class="form-group">
                             <label>Fecha de Publicación</label>
                             <div class="input-group date" id="datePicker" data-target-input="nearest">
-                                <input name="published_at" type="text" class="form-control datetimepicker-input" data-target="#datePicker"/>
+                                <input name="published_at" 
+                                value =" {{ old('published_at') }}" 
+                                type="text" 
+                                class="form-control datetimepicker-input" 
+                                data-target="#datePicker"/>
                                 <div class="input-group-append" data-target="#datePicker" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
@@ -80,12 +92,17 @@
 
                         <div class="form-group">
                             <label>Categorías</label>
-                            <select name="category_id" class="form-control">
+                            <select name="category_id" class="form-control   {{ $errors->has('category_id') ? 'is-invalid' : '' }} ">
                                 <option value="">Selecciona una categoría</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" 
+                                        {{ (old('category_id') == $category->id) ? 'selected' : '' }}    
+                                    >{{ $category->name }}</option>
                                 @endforeach
                             </select>
+
+                            {!! $errors->first('category_id', '<span class="error invalid-feedback"> El campo category es obligatorio </span>') !!}
+
                         </div>
                         <!-- /.form group -->
 
@@ -97,7 +114,7 @@
                                     data-placeholder="Selecciona una o mas etiquetas" 
                                     style="width: 100%;">
                                 @foreach ($tags as $tag)
-                                    <option value="{{ $tag->id }}"> {{ $tag->name }}</option>    
+                                    <option  {{ collect(old('tags'))->contains($tag->id) ? 'selected' : '' }} value="{{ $tag->id }}"> {{ $tag->name }}</option>    
                                 @endforeach
                             </select>
 
@@ -106,7 +123,10 @@
 
                         <div class="form-group">
                             <label >Extracto de la publicación</label>
-                            <textarea name="excerpt" class="form-control" placeholder="Ingresa un extracto de la publicación"></textarea>
+                            <textarea name="excerpt" 
+                            class="form-control  {{ $errors->has('excerpt') ? 'is-invalid' : '' }} " 
+                            placeholder="Ingresa un extracto de la publicación"> {{ old('excerpt') }} </textarea>
+                            {!! $errors->first('excerpt', '<span class="error invalid-feedback"> :message </span>') !!}
                         </div>
                         <!-- /.form group -->
 
