@@ -66,7 +66,7 @@
                 @if (session()->has('flash'))
                     <div class="alert alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h5><i class="icon fas fa-check"></i> Bien!</h5>
+                        <h5><i class="icon fas fa-check"></i> ¡Excelente!</h5>
                         {{ session('flash') }}
                     </div>
                 @endif

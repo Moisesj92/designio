@@ -7,6 +7,8 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
+use Illuminate\Support\Str;
+
 class PostTableSeeder extends Seeder
 {
     /**
@@ -24,33 +26,37 @@ class PostTableSeeder extends Seeder
 
 
         $post = new Post;
-        $post->title = "Mi primer post";
-        $post->excerpt = "Extarcto de mi primer post";
-        $post->body="<p>Contenido primer post</p>";
+        $post->title = "1 Lorem ipsum dolor sit amet.";
+        $post->url = str::slug("1 Lorem ipsum dolor sit amet.");
+        $post->excerpt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien nibh, elementum in tellus nec.";
+        $post->body="<p>mauris. Pellentesque posuere tellus eu purus hendrerit, tempor eleifend ligula condimentum. Suspendisse sit amet est nec neque fermentum convallis sit amet sit amet urna. Proin ullamcorper ipsum sit amet felis facilisis, ac suscipit mauris hendrerit. Fusce imperdiet lorem et metus fringilla scelerisque. Praesent pellentesque pharetra tempus. Sed non suscipit turpis, id ullamcorper odio.</p>";
         $post->published_at = Carbon::now()->subDays(4);
         $post->category_id = 1;
         $post->save();
 
         $post = new Post;
-        $post->title = "Mi segundo post";
-        $post->excerpt = "Extarcto de mi segundo post";
-        $post->body="<p>Contenido segundo post</p>";
+        $post->title = "2 Lorem ipsum dolor sit amet.";
+        $post->url = str::slug("2 Lorem ipsum dolor sit amet.");
+        $post->excerpt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien nibh, elementum in tellus nec.";
+        $post->body="<p>eleifend ligula condimentum. Suspendisse sit amet est nec neque fermentum convallis sit amet sit amet urna. Proin ullamcorper ipsum sit amet felis facilisis, ac suscipit mauris hendrerit. Fusce imperdiet lorem et metus fringilla scelerisque. Praesent pellentesque pharetra tempus. Sed non suscipit turpis, id ullamcorper odio.</p>";
         $post->published_at = Carbon::now()->subDays(3);
         $post->category_id = 2;
         $post->save();
 
         $post = new Post;
-        $post->title = "Mi tercer post";
-        $post->excerpt = "Extarcto de mi tercer post";
-        $post->body="<p>Contenido tercer post</p>";
+        $post->title = "3 Lorem ipsum dolor sit amet.";
+        $post->url = str::slug("3 Lorem ipsum dolor sit amet.");
+        $post->excerpt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien nibh, elementum in tellus nec.";
+        $post->body="<p>purus hendrerit, tempor eleifend ligula condimentum. Suspendisse sit amet est nec neque fermentum convallis sit amet sit amet urna. Proin ullamcorper ipsum sit amet felis facilisis, ac suscipit mauris hendrerit. Fusce imperdiet lorem et metus fringilla scelerisque. Praesent pellentesque pharetra tempus. Sed non suscipit turpis, id ullamcorper odio.</p>";
         $post->published_at = Carbon::now()->subDays(2);
         $post->category_id = 1;
         $post->save();
 
         $post = new Post;
-        $post->title = "Mi cuarto post";
-        $post->excerpt = "Extarcto de mi cuarto post";
-        $post->body="<p>Contenido cuarto post</p>";
+        $post->title = "4 Lorem ipsum dolor sit amet.";
+        $post->url = str::slug("4 Lorem ipsum dolor sit amet.");
+        $post->excerpt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien nibh, elementum in tellus nec.";
+        $post->body="<p>tum convallis sit amet sit amet urna. Proin ullamcorper ipsum sit amet felis facilisis, ac suscipit mauris hendrerit. Fusce imperdiet lorem et metus fringilla scelerisque. Praesent pellentesque pharetra tempus. Sed non suscipit turpis, id ullamcorper odio.</p>";
         $post->published_at = Carbon::now()->subDays(1);
         $post->category_id = 2;
         $post->save();

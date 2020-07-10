@@ -18,6 +18,13 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    //Sobrescribir metodo de eloquent para encontrar post por el campo title
+    public function getRouteKeyName()
+    {
+        //Se retorna el campo por el cual se desea buscar por defecto
+        return 'url';
+    }
+
 
     public function category()
     {

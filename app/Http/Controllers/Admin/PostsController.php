@@ -10,6 +10,7 @@ use App\Category;
 use App\Tag;
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -45,9 +46,10 @@ class PostsController extends Controller
         $post = new Post;
 
         $post->title        = $request->get('title');
+        $post->url          = Str::slug( $request->get('title') );
         $post->excerpt      = $request->get('excerpt');
         $post->body         = $request->get('body');
-        $post->published_at =   ($request->get('publisehd_at') == null ) ? null : Carbon::parse( $request->get('published_at') );
+        $post->published_at = ($request->get('published_at') == null ) ? null : Carbon::parse( $request->get('published_at') );
         $post->category_id     = $request->get('category_id');
         $post->save();
 
