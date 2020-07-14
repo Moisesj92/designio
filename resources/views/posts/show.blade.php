@@ -1,5 +1,17 @@
 @extends('layout')
 
+@section('meta-title')
+
+    {{ $post->title }}
+    
+@endsection
+
+@section('meta-description')
+    
+    {{ $post->excerpt }}
+
+@endsection
+
 @section('content')
 
     <article class="post image-w-text container">
