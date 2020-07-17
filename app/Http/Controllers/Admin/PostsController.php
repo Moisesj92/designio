@@ -21,14 +21,14 @@ class PostsController extends Controller
         return view('admin.posts.index', compact('posts') );
     }
 
-    public function create()
+    /*public function create()
     {
         $categories = Category::all();
         $tags = Tag::all();
 
 
         return view('admin.posts.create', compact('categories', 'tags'));
-    }
+    }*/
 
     public function store (Request $request)
     {
@@ -36,8 +36,8 @@ class PostsController extends Controller
 
 
         $post = Post::create([
-            'title' => $request->get('title'),
-            'url' => str::slug($request->get('title'))
+            'title' => $request->input('title'),
+            'url' => str::slug($request->input('title'))
         ]);
 
         return redirect()->route('admin.posts.edit', $post);
@@ -46,10 +46,14 @@ class PostsController extends Controller
 
     public function edit (Post $post)
     {
-        return view('admin.posts.edit',compact('post'));
+        $categories = Category::all();
+        $tags = Tag::all();
+
+
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
-    /* public function store(Request $request)
+    public function update(Post $post, Request $request)
     {
 
         //Validacion
@@ -60,23 +64,20 @@ class PostsController extends Controller
             'excerpt' => 'required'
         ]);
 
-
-        $post = new Post;
-
-        $post->title        = $request->get('title');
-        $post->url          = Str::slug( $request->get('title') );
-        $post->excerpt      = $request->get('excerpt');
-        $post->body         = $request->get('body');
-        $post->published_at = ($request->get('published_at') == null ) ? null : Carbon::parse( $request->get('published_at') );
-        $post->category_id     = $request->get('category_id');
+        $post->title        = $request->input('title');
+        $post->url          = Str::slug( $request->input('title') );
+        $post->excerpt      = $request->input('excerpt');
+        $post->body         = $request->input('body');
+        $post->published_at = ($request->input('published_at') == null ) ? null : Carbon::parse( $request->input('published_at') );
+        $post->category_id     = $request->input('category_id');
         $post->save();
 
 
         //Luego de guardar el post hay que guardar la relacion con los demas elementos
-        $post->tags()->attach($request->get('tags'));
+        $post->tags()->sync($request->input('tags'));
 
-        return back()->with('flash', 'Felicidades tu publicación ha sido creada exitosamente');
+        return back()->with('flash', 'Felicidades tu publicación ha sido guardada exitosamente');
 
-    } */
+    }
 
 }

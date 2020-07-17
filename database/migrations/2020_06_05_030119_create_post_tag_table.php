@@ -20,7 +20,6 @@ class CreatePostTagTable extends Migration
             $table->unsignedInteger('tag_id');
 
 
-            $table->timestamps();
         });
     }
 

@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.posts.create') }}" class="nav-link {{ request()->is('admin/posts/create') ? 'active' : '' }} ">
+                    <a href="#" class="nav-link {{ request()->is('admin/posts/create') ? 'active' : '' }} " data-toggle="modal" data-target="#exampleModal">
                         <i class="fas fa-pen-square nav-icon"></i>
                         <p>Crear Post</p>
                     </a>

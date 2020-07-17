@@ -34,6 +34,8 @@ class PostTableSeeder extends Seeder
         $post->category_id = 1;
         $post->save();
 
+        $post->tags()->attach(Tag::create( ['name'=>'etiqueta Lorem'] ));
+
         $post = new Post;
         $post->title = "2 Lorem ipsum dolor sit amet.";
         $post->url = str::slug("2 Lorem ipsum dolor sit amet.");
@@ -42,6 +44,8 @@ class PostTableSeeder extends Seeder
         $post->published_at = Carbon::now()->subDays(3);
         $post->category_id = 2;
         $post->save();
+
+        $post->tags()->attach(Tag::create( ['name'=>'etiqueta Ipsum'] ));
 
         $post = new Post;
         $post->title = "3 Lorem ipsum dolor sit amet.";
@@ -52,6 +56,8 @@ class PostTableSeeder extends Seeder
         $post->category_id = 1;
         $post->save();
 
+        $post->tags()->attach(Tag::create( ['name'=>'etiqueta dolor'] ));
+
         $post = new Post;
         $post->title = "4 Lorem ipsum dolor sit amet.";
         $post->url = str::slug("4 Lorem ipsum dolor sit amet.");
@@ -60,6 +66,8 @@ class PostTableSeeder extends Seeder
         $post->published_at = Carbon::now()->subDays(1);
         $post->category_id = 2;
         $post->save();
+
+        $post->tags()->attach(Tag::create( ['name'=>'etiqueta sit'] ));
 
         $category = new Category;
         $category->name = 'Categoria 1';
