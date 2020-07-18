@@ -15,7 +15,8 @@
                 <!-- <label >Título de la publicación</label> -->
                 <input name="title"
                 value =" {{ old('title') }}" 
-                type="text" 
+                type="text"
+                required
                 class="form-control  {{ $errors->has('title') ? 'is-invalid' : '' }}" 
                 placeholder="Ingresa el título de la publicación">
                 {!! $errors->first('title', '<span class="error invalid-feedback"> :message </span>') !!}

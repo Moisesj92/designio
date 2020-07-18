@@ -76,7 +76,7 @@ class PostsController extends Controller
         //Luego de guardar el post hay que guardar la relacion con los demas elementos
         $post->tags()->sync($request->input('tags'));
 
-        return back()->with('flash', 'Felicidades tu publicación ha sido guardada exitosamente');
+        return redirect()->route('admin.posts.edit', $post)->with('flash', 'Felicidades tu publicación ha sido guardada exitosamente');
 
     }
 

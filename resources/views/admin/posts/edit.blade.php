@@ -91,6 +91,7 @@
                         </div>
                         <!-- /.form group -->
 
+                        <!-- Category -->
                         <div class="form-group">
                             <label>Categorías</label>
                             <select name="category_id" class="form-control   {{ $errors->has('category_id') ? 'is-invalid' : '' }} ">
@@ -107,6 +108,7 @@
                         </div>
                         <!-- /.form group -->
 
+                        <!-- Tags -->
                         <div class="form-group">
                             <label> Etiquetas </label>
                             <select name="tags[]"
@@ -122,6 +124,7 @@
                         </div>
                         <!-- /.form group -->
 
+                        <!-- Excerpt -->
                         <div class="form-group">
                             <label >Extracto de la publicación</label>
                             <textarea name="excerpt" 
@@ -131,11 +134,20 @@
                         </div>
                         <!-- /.form group -->
 
+                        <!-- Dropzone -->
+                        <div class="form-group">
+                            <div class="dropzone"></div>
+                        </div>
+                        <!-- /.form group -->
+
+
+                        <!-- Button Send Form -->
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">
                                 Guardar Publicación
                             </button>
                         </div>
+                        <!-- /.form group -->
 
                     </div>
                     <!-- /.card-body -->
@@ -159,6 +171,8 @@
     <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.min.css">
+    <!-- Dorpzone Js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/dropzone.min.css">
 
     
 
@@ -177,6 +191,8 @@
     <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
     <!-- Summernote -->
     <script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- Dropzone Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/dropzone.min.js"></script>
     
     
 
@@ -186,15 +202,23 @@
             format: 'DD-MM-YYYY'
         });
 
-        $(function () {
-            //Initialize Select2 Elements
-            $('.select2').select2();
-            // Summernote
-            $('.textarea').summernote({
-                height: 300,
-            });
-
+        //Initialize Select2 Elements
+        $('.select2').select2();
+        // Summernote
+        $('.textarea').summernote({
+            height: 300,
         });
+
+        //Dropzone
+        new Dropzone('.dropzone', {
+            url: '/admin/posts/{{ $post->url }}/photos',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            dictDefaultMessage: 'Arrastra las fotos aquí'
+        });
+
+        Dropzone.autoDiscover = false;
         
     </script>
     
