@@ -210,12 +210,21 @@
         });
 
         //Dropzone
-        new Dropzone('.dropzone', {
+        var myDropZone = new Dropzone('.dropzone', {
             url: '/admin/posts/{{ $post->url }}/photos',
+            maxFilesize: 2,
+            paramName: "photo",
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
             dictDefaultMessage: 'Arrastra las fotos aquí'
+        });
+
+        myDropZone.on('error', function(file, response){
+            
+            var msg = response.errors.photo[0];
+            $('.dz-error-message:last > span').text(msg);
+
         });
 
         Dropzone.autoDiscover = false;
