@@ -53,7 +53,11 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->excerpt }}</td>
                         <td>
-                          <a href="" class="btn btn-xs btn-info"> <i class="fas fa-pencil-alt"></i> </a>
+                          <a href=" {{ route('posts.show', $post) }} " 
+                            class="btn btn-xs btn-default"
+                            target="_blank"
+                          > <i class="fas fa-eye"></i> </a>
+                          <a href=" {{ route('admin.posts.edit', $post)}} " class="btn btn-xs btn-info"> <i class="fas fa-pencil-alt"></i> </a>
                           <a href="" class="btn btn-xs btn-danger"> <i class="fas fa-times"></i> </a>
                         </td>
                     </tr>

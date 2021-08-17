@@ -69,7 +69,7 @@ class PostsController extends Controller
         $post->excerpt      = $request->input('excerpt');
         $post->body         = $request->input('body');
         $post->published_at = ($request->input('published_at') == null ) ? null : Carbon::parse( $request->input('published_at') );
-        $post->category_id     = $request->input('category_id');
+        $post->category_id  = $request->input('category_id');
         $post->save();
 
 
